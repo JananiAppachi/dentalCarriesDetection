@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Results</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 30px; }
+    img { max-width: 480px; border-radius: 8px; border:1px solid #ddd; }
+    .row { display:flex; gap:20px; flex-wrap:wrap; }
+    table { border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <h2>Prediction Results</h2>
+  <div class="row">
+    <div>
+      <h4>Uploaded</h4>
+      <img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}">
+    </div>
+    <div>
+      <h4>Detections</h4>
+      <img src="{{ url_for('static', filename='outputs/' + predicted_image) }}">
+    </div>
+  </div>
+
+  <h3>Detections (boxes)</h3>
+  {% if detections and detections|length > 0 %}
+  <table>
+    <tr><th>#</th><th>Class</th><th>Confidence</th><th>Box [x1,y1,x2,y2]</th></tr>
+    {% for d in detections %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ d.class_name }}</td>
+      <td>{{ d.confidence }}</td>
+      <td>{{ d.box }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p>No objects detected.</p>
+  {% endif %}
+
+  <p style="margin-top:24px;"><a href="/">↩ Back</a></p>
+</body>
+</html>
