@@ -6,3 +6,5 @@ ultralytics
 opencv-python
 numpy
 Pillow
+werkzeug
+jinja2
