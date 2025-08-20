@@ -1,24 +1,293 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Dental Cavity Detection</title>
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 40px; }
-    .card { border: 1px solid #ddd; padding: 24px; border-radius: 12px; max-width: 520px; }
-    button { padding: 10px 16px; border-radius: 8px; border: 0; background:#111; color:#fff; cursor:pointer; }
-    input[type=file]{ margin:12px 0;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental AI & Oral Health</title>
+<style>
+/* --------- General --------- */
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(to right, #e0f7fa, #e8f0fe);
+}
+a { text-decoration: none; color: inherit; }
+
+/* --------- Navbar --------- */
+nav {
+    background: #1a237e;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+nav h2 { margin: 0; font-size: 1.5rem; color: #fff;}
+nav a { color: #fff; margin-left: 20px; font-weight: bold; transition: 0.3s;}
+nav a:hover { color: #ffeb3b; }
+
+/* --------- Hero Section --------- */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px 80px;
+    text-align: center;
+    background: linear-gradient(to right, #1a237e, #3949ab);
+    color: #fff;
+}
+.hero img { width: 300px; border-radius: 20px; margin: 20px; }
+.hero h1 { font-size: 3rem; margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; margin-bottom: 40px; }
+
+/* --------- Upload Section --------- */
+
+/* Upload Section */
+/* --------- Upload Section --------- */
+.upload-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px 120px;
+    background: url("https://aadhyadentalcare.com/assets/images/Banner.png") no-repeat center center/cover;
+    margin-top: 60px;  /* ✅ Creates a clean gap from hero section */
+}
+
+
+/* White Card */
+.upload-card {
+    background: #fff;  /* plain white */
+    width: 90%;
+    max-width: 500px;
+    
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* Buttons */
+input[type="file"] { display: none; }
+button, label.btn {
+    background: #1a237e;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 10px;
+    border: none;
+    transition: all 0.3s ease;
+}
+button:hover, label.btn:hover { background: #3949ab; transform: translateY(-2px); }
+#file-name { font-size: 0.9rem; color: #444; margin-top: 10px; }
+
+
+/* --------- Info Cards --------- */
+.info-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.info-card {
+    flex: 1 1 250px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.info-card:hover { transform: translateY(-5px); }
+.info-card img { width: 100px; margin-bottom: 15px; }
+.info-card h3 { color: #1a237e; margin-bottom: 10px; }
+.info-card p { font-size: 0.95rem; color: #555; line-height: 1.5; }
+
+/* --------- Sections --------- */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+.section h2 {
+    color: #1a237e;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+.section p {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* --------- Teeth & Food Cards --------- */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.cards-container .card {
+    flex: 1 1 250px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.cards-container .card img {
+    width: 120px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+.cards-container .card:hover { transform: translateY(-5px); }
+
+/* --------- Footer --------- */
+footer {
+    background: #1a237e;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+footer p { margin: 0; }
+
+/* --------- Responsive --------- */
+@media(max-width:900px) {
+    .hero { flex-direction: column; }
+    .hero img { margin: 20px 0; }
+    .cards-container { flex-direction: column; }
+}
+</style>
 </head>
 <body>
-  <h1>Dental Cavity Detection (YOLOv8)</h1>
-  <div class="card">
-    <form action="/predict" method="post" enctype="multipart/form-data">
-      <label>Upload dental X-ray (JPG/PNG)</label><br>
-      <input type="file" name="image" accept="image/*" required>
-      <br>
-      <button type="submit">Detect</button>
+
+<!-- Navbar -->
+<nav>
+  <h2>Dental AI</h2>
+  <div>
+    <a href="#about">About Teeth</a>
+    <a href="#hygiene">Hygiene Tips</a>
+    <a href="#nutrition">Nutrition</a>
+    <a href="#upload">Detect Now</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <h1>AI Powered Dental Cavity Detection</h1>
+    <p>Upload X-ray images to detect caries, cavities, and teeth problems automatically.</p>
+    <a href="#upload"><button>Start Detection</button></a>
+  </div>
+  <img src="static/images/dental-ai.png" alt="Dental AI Illustration">
+</section>
+
+<!-- Upload -->
+<!-- Upload -->
+<section id="upload" class="upload-section">
+  <div class="upload-card">
+    <h2>Upload Your X-ray</h2>
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+      <input type="file" name="file" id="file-input" onchange="updateFileName(this)">
+      <label for="file-input" class="btn">Choose X-ray Image</label>
+      <p id="file-name"></p>
+      <button type="submit">Detect Now</button>
     </form>
   </div>
+</section>
+
+
+<!-- About Teeth -->
+<section class="section" id="about">
+  <h2>About Your Teeth</h2>
+  <p>Teeth are vital for chewing, speaking, and maintaining overall oral health. Each tooth has an enamel, dentin, pulp, and root. Maintaining healthy teeth helps prevent cavities, caries, and other dental issues.</p>
+  <div class="cards-container">
+    <div class="card">
+      <img src="static/images/tooth-structure.jpg" alt="Tooth Structure">
+      <h3>Tooth Structure</h3>
+      <p>Learn about enamel, dentin, pulp, and roots that make your teeth strong.</p>
+    </div>
+    <div class="card">
+      <img src="static/images/dentist.png" alt="Dentist Care">
+      <h3>Dental Care</h3>
+      <p>Regular checkups with dentists ensure early detection and treatment of dental issues.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Hygiene Tips -->
+<section class="section" id="hygiene">
+  <h2>Oral Hygiene Tips</h2>
+  <p>Proper hygiene prevents cavities, caries, and bad breath. Follow these tips:</p>
+  <div class="cards-container">
+    <div class="card">
+      <img src="static/images/brush.jpg" alt="Brushing">
+      <h3>Brush Twice Daily</h3>
+      <p>Use fluoride toothpaste and brush for at least 2 minutes.</p>
+    </div>
+    <div class="card">
+      <img src="static/images/floss.jpg" alt="Flossing">
+      <h3>Floss Regularly</h3>
+      <p>Clean between teeth to remove hidden food particles.</p>
+    </div>
+    <div class="card">
+      <img src="static/images/mouthwash.jpg" alt="Mouthwash">
+      <h3>Mouthwash</h3>
+      <p>Use antiseptic mouthwash to reduce bacteria and freshen breath.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Nutrition -->
+<section class="section" id="nutrition">
+  <h2>Nutrition for Strong Teeth</h2>
+  <p>Strong teeth require calcium, phosphorus, and vitamins. These nutrients come from your daily diet.</p>
+  <div class="cards-container">
+    <div class="card">
+      <img src="static/images/milk.jpg" alt="Milk">
+      <h3>Milk & Dairy</h3>
+      <p>Rich in calcium and vitamin D for stronger enamel and bones.</p>
+    </div>
+    <div class="card">
+      <img src="static/images/cheese.jpg" alt="Cheese">
+      <h3>Cheese</h3>
+      <p>Helps neutralize acid and strengthens teeth.</p>
+    </div>
+    <div class="card">
+      <img src="static/images/vegetables.jpg" alt="Veggies">
+      <h3>Leafy Greens</h3>
+      <p>Spinach, kale, and broccoli provide calcium and vitamins for oral health.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 DentoCare | AI Dental Detection & Oral Health</p>
+</footer>
+
+<script>
+function updateFileName(input) {
+  const fileName = input.files.length > 0 ? input.files[0].name : "";
+  document.getElementById("file-name").innerText = fileName;
+}
+</script>
 </body>
 </html>
